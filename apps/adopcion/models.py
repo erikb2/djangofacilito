@@ -10,3 +10,5 @@ class Persona(models.Model):
     telefono  = models.CharField(max_length=12)
     domicilio = models.TextField()
 
+    def __unicode__(self):
+        return '{} {}'.format(self.nombre, self.apellidos)
