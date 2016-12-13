@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td><b>#</b></td>
+            <td><b>Nombre</b></td>
+            <td><b>Apellidos</b></td>
+            <td><b>Edad</b></td>
+            <td><b>Telefono</b></td>
+            <td><b>Domicilio</b></td>
+            <td><b>Acciones</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+            {% for adoptante in object_list %}
+                <tr>
+                    <td>{{ adoptante.id }}</td>
+                    <td>{{ adoptante.nombre }}</td>
+                    <td>{{ adoptante.apellidos }}</td>
+                    <td>{{ adoptante.edad }}</td>
+                    <td>{{ adoptante.telefono }}</td>
+                    <td>{{ adoptante.domicilio }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'adopcion:adopcion_editar' adoptante.id %}">Editar</a>
+                        <a class="btn btn-danger" href="{% url 'adopcion:adopcion_eliminar' adoptante.id %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <h1>No hay registros de adoptantes.</h1>
+        {% endif %}
+
+    </tbody>
+</table>
+
+{% endblock %}
