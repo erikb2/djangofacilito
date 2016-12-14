@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td><b># Solicitud</b></td>
+            <td><b>Adoptante</b></td>
+            <td><b>No. Mascotas</b></td>
+            <td><b>Razones</b></td>
+            <td><b>Acciones</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if lista_solicitudes %}
+            {% for solicitud in lista_solicitudes %}
+                <tr>
+                    <td>{{ solicitud.id }}</td>
+                    <td>{{ solicitud.persona.nombre}} {{ solicitud.persona.apellidos }}</td>
+                    <td>{{ solicitud.numero_mascotas }}</td>
+                    <td>{{ solicitud.razones }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'adopcion:solicitud_editar' solicitud.id %}">Editar</a>
+                        <a class="btn btn-danger" href="{% url 'adopcion:solicitud_eliminar' solicitud.id %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <h1>No hay solicitudes para adopar perros.</h1>
+        {% endif %}
+
+    </tbody>
+</table>
+
+{% endblock %}

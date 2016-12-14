@@ -28,25 +28,27 @@ class AdopcionForm(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={'class':'form-control'}),
             'apellidos': forms.TextInput(attrs={'class':'form-control'}),
-            'edad': forms.TextInput(attrs={'class':'form-control'}),
+            'edad': forms.NumberInput(attrs={'class':'form-control'}),
             'telefono': forms.TextInput(attrs={'class':'form-control'}),
             'domicilio': forms.TextInput(attrs={'class':'form-control'}),
         }
 
 
 class SolicitudForm(forms.ModelForm):
-    model = Solicitud
-    fields = [
-        'numero_mascotas',
-        'razones',
-    ]
 
-    labels = {
-        'numero_mascotas': 'Numero de mascotas',
-        'razones': 'Razones para adoptar',
-    }
+    class Meta:
+        model = Solicitud
+        fields = [
+            'numero_mascotas',
+            'razones',
+        ]
 
-    widgets = {
-        'numero_mascotas': forms.TextInput(attrs={'class':'form-control'}),
-        'razones':forms.TextArea(attrs={'class':'form-control'}),
-    }
+        labels = {
+            'numero_mascotas': 'Numero de mascotas',
+            'razones': 'Razones para adoptar',
+        }
+
+        widgets = {
+            'numero_mascotas': forms.TextInput(attrs={'class':'form-control'}),
+            'razones': forms.Textarea(attrs={'class':'form-control'}),
+        }
