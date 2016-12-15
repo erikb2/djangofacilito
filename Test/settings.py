@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from django.core.urlresolvers import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.adopcion',
     'apps.mascota',
+    'apps.usuario',
     # 'apps.adopcion.apps.AdopcionConfig',
     # 'apps.mascota.apps.MascotaConfig',
 ]
@@ -128,3 +130,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+# Cuando alguien se loguea, redirecciona a la siguiente URL
+LOGIN_REDIRECT_URL = reverse_lazy('adopcion:solicitud_listar')
+
+# Cuando alguien se des-loguea, redirecciona a la siguiente URL
+LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
