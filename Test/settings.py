@@ -137,3 +137,13 @@ LOGIN_REDIRECT_URL = reverse_lazy('adopcion:solicitud_listar')
 # Cuando alguien se des-loguea, redirecciona a la siguiente URL
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
+# Envio de correos electronicos con gmail
+EMAIL_USE_TLS = True
+EMAIL_HOST    = 'smtp.gmail.com'
+EMAIL_PORT    = 587
+EMAIL_HOST_USER = 'erik.barajas93@gmail.com'
+EMAIL_HOST_PASSWORD = '3558ERIK200'
+# EMAIL_HOST_USER = 'cursodjangocf@gmail.com'
+# EMAIL_HOST_PASSWORD = 'cursodjango16'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
+
